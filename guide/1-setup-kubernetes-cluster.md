@@ -12,3 +12,26 @@
     - Controller Manager and Scheduler are running in active-passive mode (achieved with leader elect process)
     - etcd is running in a separate cluster consiting of minimal 3 nodes for the quorum to work
 
+## Prerequisites:
+
+### prepare cluster nodes
+
+#### network configuration
+- [x] enable IPv4 packet forwarding
+```sh
+# sysctl params required by setup, params persist across reboots
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.ipv4.ip_forward = 1
+EOF
+
+# Apply sysctl params without reboot
+sudo sysctl --system
+```
+- [x] use `systemd` as your control group (cgroup) driver
+- [ ] install container runtime ([containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md))
+    - install kubeadm on all the nodes
+
+- Use kubeadmin to install master server
+- setup pod network on all the nodes (flannel)
+- On second node, install kubeadm and join it to the cluster as a worker node
+
