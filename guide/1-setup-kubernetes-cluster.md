@@ -28,8 +28,17 @@ EOF
 sudo sysctl --system
 ```
 - [x] use `systemd` as your control group (cgroup) driver
-- [ ] install container runtime ([containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md))
-    - install kubeadm on all the nodes
+- [x] install container runtime ([containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md))
+    - follow the instructions on this [page](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
+- [x] use `systemd` as your control group (cgroup) driver
+- To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set
+```
+[plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
+  [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
+    SystemdCgroup = true
+```
+- [ ] install kubeadm on all the nodes
+    - follow the instructions on this [page](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 - Use kubeadmin to install master server
 - setup pod network on all the nodes (flannel)
