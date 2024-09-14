@@ -7,7 +7,7 @@
 ## High availability
 
 - there is no redundancy built into the cluster, so if the master node fails, the cluster will be unavailable.
-- the HA setup can be achieved by adding additional master node where:
+- the [HA setup](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) can be achieved by adding additional master node where:
     - Kube API server is load balanced
     - Controller Manager and Scheduler are running in active-passive mode (achieved with leader elect process)
     - etcd is running in a separate cluster consiting of minimal 3 nodes for the quorum to work
@@ -15,6 +15,8 @@
 ## Prerequisites:
 
 ### prepare cluster nodes
+
+- [x] disable swap (the default kubelet configuration is to fail to start if the swap is on)
 
 #### network configuration
 - [x] enable IPv4 packet forwarding
@@ -33,14 +35,25 @@ sudo sysctl --system
 - [x] use `systemd` as your control group (cgroup) driver
 - To use the systemd cgroup driver in /etc/containerd/config.toml with runc, set
 ```
+...
 [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc]
   [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
     SystemdCgroup = true
 ```
-- [ ] install kubeadm on all the nodes
+- [x] install kubeadm on all the nodes
     - follow the instructions on this [page](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
-- Use kubeadmin to install master server
-- setup pod network on all the nodes (flannel)
+- [x] create a single control plane cluster with [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
+```sh
+sudo kubeadm init --pod-network-cidr 10.244.0.0/16 --v=5
+```
+
+- [x] setup pod network on all the nodes
+No need for setting custom pod cidr as `10.244.0.0/16` is default for flannel
+```
+kubectl apply -f https://github.com/flannel-io/flannel/releases/latest/download/kube-flannel.yml
+```
 - On second node, install kubeadm and join it to the cluster as a worker node
 
+## accessing remote cluster
+https://jamesdefabia.github.io/docs/user-guide/sharing-clusters/
