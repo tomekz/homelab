@@ -1,0 +1,8 @@
+# Ignore argocd initial build artifacts
+/system/argocd/charts
+/system/argocd/chart.lock
+
+
+# Ignore secrets
+*secrets.env
+*credentials.json

@@ -1,0 +1,58 @@
+argo-cd:
+  global:
+    domain: argocd.tomekz.com
+  configs:
+    params:
+      server.insecure: true
+      controller.diff.server.side: true
+  server:
+    ingress:
+      enabled: true
+      ingressClassName: traefik
+      tls: false
+    metrics: &metrics
+      enabled: false
+      serviceMonitor:
+        enabled: false
+  controller:
+    metrics: *metrics
+  repoServer:
+    metrics: *metrics
+  redis:
+    metrics: *metrics
+argocd-apps:
+  applicationsets:
+    root:
+      namespace: argocd
+      generators:
+        - git:
+            repoURL: &repoURL https://github.com/tomekz/homelab.git
+            revision: &revision main
+            directories:
+              - path: system/*
+      template:
+        metadata:
+          name: '{{path.basename}}'
+        spec:
+          project: default
+          destination:
+            name: in-cluster
+            namespace: '{{path.basename}}'
+          source:
+            repoURL: *repoURL
+            targetRevision: *revision
+            path: '{{path}}'
+          syncPolicy:
+            automated:
+              prune: true
+              selfHeal: true
+            retry:
+              limit: 10
+              backoff:
+                duration: 1m
+                factor: 2
+                maxDuration: 16m
+            syncOptions:
+              - CreateNamespace=true
+              - ApplyOutOfSyncOnly=true
+              - ServerSideApply=true
