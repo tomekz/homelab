@@ -2,15 +2,21 @@
 
 - deployed locally on Dell OptiPlex servers using [kubeadm](https://kubernetes.io/docs/reference/setup-tools/kubeadm/)
 - consists of three nodes, one master and two worker nodes.
-- etcd, kube-apiserver, kube-controller-manager, kube-scheduler, and kube-proxy are running on the same master node.
+- etcd, kube-apiserver, kube-controller-manager, kube-scheduler, and kube-proxy are running on the same master node (stacked topology)
+- this is easier to setup and manage but not recommended for production environments as it lacks redundancy and high availability.
 
 ## High availability
 
 - there is no redundancy built into the cluster, so if the master node fails, the cluster will be unavailable.
 - the [HA setup](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/ha-topology/) can be achieved by adding additional master node where:
     - Kube API server is load balanced
-    - Controller Manager and Scheduler are running in active-passive mode (achieved with leader elect process)
-    - etcd is running in a separate cluster consiting of minimal 3 nodes for the quorum to work
+    - Controller Manager and Scheduler are running in active-passive mode (achieved with leader elect process) and each node has its own `etcd` instance.
+    ```sh
+     kube-controller-manager 
+     --leader-elect=true
+     --etcd-servers=http://node1:2379,http://node2:2379
+     ```
+- the HA setup could be further enhanced by running `etcd` on its own set of servers this way, the `etcd` data will be preserved even if the master nodes fail.
 
 ## Prerequisites:
 

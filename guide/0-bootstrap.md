@@ -5,9 +5,10 @@ This includes setting up the physical servers, configuring the network, and inst
 
 ### Prerequisites
 
-- **Ansible**: Used for provisioning and configuring the servers.
-- **kubectl**: Command-line tool for interacting with the Kubernetes cluster.
-- **Helm**: Package manager for Kubernetes.
+on all the servers:
+- container runtime: containerd
+- kubeadm
+- networking plugin: calico
 
 ## servers 
 
@@ -31,3 +32,6 @@ Use the Ansible playbooks to provision and configure the Dell OptiPlex servers.
 ```sh
 ansible-playbook ansible/provision.yml
 ```
+
+
+
