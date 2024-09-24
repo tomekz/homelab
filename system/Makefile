@@ -12,3 +12,4 @@ deps:
 .PHONY: namespace
 namespace:
 	kubectl create namespace argocd --dry-run=client -o yaml | kubectl apply -f -
+
