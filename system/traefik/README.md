@@ -6,7 +6,6 @@ helm install traefik traefik/traefik --values=values.yaml
 ```
 
 # setup sample traefik ingress:
-``
 - deploy a sample app
 - create a service
 - create an ingress
