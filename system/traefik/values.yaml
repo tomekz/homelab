@@ -72,12 +72,12 @@ ingressRoute:
   dashboard:
     enabled: false
 
-# Persistent Storage
-# persistence:
-#   enabled: true
-#   name: ssl-certs
-#   size: 1Gi
-#   path: /ssl-certs
+Persistent Storage
+persistence:
+  enabled: true
+  name: ssl-certs
+  size: 1Gi
+  path: /ssl-certs
 #
 # deployment:
 #   initContainers:
