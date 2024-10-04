@@ -1,0 +1,58 @@
+repositories:
+  - name: istio
+    url: https://istio-release.storage.googleapis.com/charts
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+    values:
+      - values/values.yaml
+---
+releases:
+  - name: istio-base
+    chart: istio/base
+    version: ~1.23.0
+    labels:
+      release: istio-base
+    namespace: istio-system
+    missingFileHandler: Error
+    values:
+      - values-templates/base.yaml.gotmpl
+  - name: istiod
+    chart: istio/istiod
+    version: ~1.23.0
+    labels:
+      release: istiod
+    namespace: istio-system
+    missingFileHandler: Error
+    values:
+      - values-templates/istiod.yaml.gotmpl
+
+  - name: istio-cni
+    chart: istio/cni
+    version: ~1.23.0
+    labels:
+      release: istio-cni
+    namespace: istio-system
+    set:
+    - name: profile
+      value: "ambient"
+
+  - name: istio-ztunnel
+    chart: istio/ztunnel
+    version: ~1.23.0
+    labels:
+      release: istio-ztunnel
+    namespace: istio-system
+
+  - name: istio-ingress
+    chart: istio/gateway
+    version: ~1.23.0
+    labels:
+      release: istio-ingress
+    namespace: istio-ingress

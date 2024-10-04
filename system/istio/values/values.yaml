@@ -1,0 +1,5 @@
+meshID: "homelab-mesh"
+
+multiCluster:
+  enabled: false
+  clusterName: ""
