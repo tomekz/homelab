@@ -1,0 +1,7 @@
+apiVersion: v2
+name: audiobookshelf-istio-mesh-ingress
+description: audiobookshelf Istio mesh ingress rules and configurations
+type: application
+version: 0.0.0
+home: ""
+icon: ""

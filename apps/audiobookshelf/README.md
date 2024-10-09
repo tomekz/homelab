@@ -19,8 +19,7 @@ helmfile diff -e homelab
 helmfile apply -e homelab
 ```
 
-You can access the Kiali dashboard by running the following command:
-
+4. Join the service mesh
 ```
-istioctl dashboard kiali
+kubectl label namespace audiobookshelf istio.io/dataplane-mode=ambient
 ```

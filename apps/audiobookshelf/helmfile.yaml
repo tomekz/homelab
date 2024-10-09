@@ -1,0 +1,25 @@
+repositories:
+  - name: geek-cookbook
+    url: https://geek-cookbook.github.io/charts/
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+    values:
+      - values/values.yaml
+---
+releases:
+  - name: audiobookshelf
+    chart: geek-cookbook/audiobookshelf
+    version: ~1.2.2
+    namespace: audiobookshelf
+  - name: audiobookshelf-ingress
+    chart: ingress
+    version: 0.0.0
+    namespace: audiobookshelf
+
