@@ -49,10 +49,7 @@ releases:
     labels:
       release: istio-ztunnel
     namespace: istio-system
-
-  - name: istio-ingress
-    chart: istio/gateway
-    version: ~1.23.0
-    labels:
-      release: istio-ingress
-    namespace: istio-ingress
+  - name: istio-gateway
+    chart: gateway
+    version: 0.0.0
+    namespace: istio-gateway

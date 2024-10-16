@@ -1,0 +1,7 @@
+apiVersion: v2
+name: istio-gateway
+description: cluster wide gateway using kubernetes gateway api
+type: application
+version: 0.0.0
+home: ""
+icon: ""
