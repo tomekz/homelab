@@ -3,7 +3,7 @@ kind: Gateway
 metadata:
   name: istio-gateway
   annotations:
-    cert-manager.io/cluster-issuer: staging-cluster-issuer
+    cert-manager.io/cluster-issuer: prod-cluster-issuer
 spec:
   gatewayClassName: istio
   listeners:

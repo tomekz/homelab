@@ -8,9 +8,10 @@ spec:
     privateKeySecretRef:
       name: staging-cluster-issuer
     solvers:
-    - http01:
-        gatewayHTTPRoute:
-          parentRefs:
-            - kind: Gateway
-              name: istio-gateway
-              namespace: istio-gateway
+    - dns01:
+        cloudflare:
+          email: zadrozny.tomasz@gmail.com
+          apiTokenSecretRef:
+            name: cloudflare-api-token
+            key: api-token
+
