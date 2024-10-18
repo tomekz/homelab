@@ -1,0 +1,7 @@
+apiVersion: v2
+name: homepage
+description: homepage
+type: application
+version: 0.0.0
+home: ""
+icon: ""

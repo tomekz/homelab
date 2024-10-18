@@ -1,0 +1,24 @@
+repositories:
+  - name: homepage
+    url: http://jameswynn.github.io/helm-charts
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+---
+releases:
+  - name: homepage
+    chart: homepage/homepage
+    version: ~2.0.1
+    namespace: homepage
+    values:
+      - values/values.yaml
+  - name: homepage-resources
+    chart: homepage
+    version: 0.0.0
+    namespace: homepage
