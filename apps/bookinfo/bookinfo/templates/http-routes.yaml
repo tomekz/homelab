@@ -17,6 +17,9 @@ spec:
         type: PathPrefix
         value: /static
     - path:
+        type: PathPrefix
+        value: /
+    - path:
         type: Exact
         value: /login
     - path:
