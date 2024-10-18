@@ -17,4 +17,4 @@ spec:
             # Allow attaching Routes from given namespaces
             - key: kubernetes.io/metadata.name
               operator: In
-              values: [audiobookshelf]
+              values: [audiobookshelf, bookinfo]

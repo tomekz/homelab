@@ -1,0 +1,15 @@
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+---
+releases:
+  - name: bookinfo
+    chart: bookinfo
+    version: 0.0.0
+    namespace: bookinfo
+
