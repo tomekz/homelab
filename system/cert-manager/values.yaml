@@ -1,8 +1,0 @@
-cert-manager:
-  namespace: cert-manager
-  installCRDs: true
-  # TODO: Enable this when prometheus is up
-  # prometheus:
-  #   enabled: true
-  #   serviceMonitor:
-  #     enabled: true

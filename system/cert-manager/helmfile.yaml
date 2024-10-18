@@ -1,0 +1,26 @@
+repositories:
+  - name: jetstack
+    url: https://charts.jetstack.io
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+    values:
+      - values/values.yaml
+---
+releases:
+  - name: cert-manager
+    chart: jetstack/cert-manager
+    version: ~1.15.3
+    namespace: cert-manager
+    values:
+      - values/values.yaml
+  - name: cert-manager-resources
+    chart: cert-manager-resources
+    version: 0.0.0
+    namespace: cert-manager

@@ -2,19 +2,26 @@ apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
 metadata:
   name: istio-gateway
+  annotations:
+    cert-manager.io/cluster-issuer: staging-cluster-issuer
 spec:
   gatewayClassName: istio
   listeners:
   - name: http
-    port: 80
+    port: 80 # required for cert-manager HTTP01 challenge
     protocol: HTTP
     hostname: "*.tomekz.party"
     allowedRoutes:
       namespaces:
-        from: Selector
-        selector:
-          matchExpressions:
-            # Allow attaching Routes from given namespaces
-            - key: kubernetes.io/metadata.name
-              operator: In
-              values: [audiobookshelf, bookinfo]
+        from: All
+  - name: https
+    port: 443
+    protocol: HTTPS
+    hostname: "*.tomekz.party"
+    allowedRoutes:
+      namespaces:
+        from: All
+    tls:
+      mode: Terminate
+      certificateRefs:
+      - name: tomekz-party-tls
