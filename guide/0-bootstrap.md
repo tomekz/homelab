@@ -32,6 +32,3 @@ Use the Ansible playbooks to provision and configure the Dell OptiPlex servers.
 ```sh
 ansible-playbook ansible/provision.yml
 ```
-
-
-
