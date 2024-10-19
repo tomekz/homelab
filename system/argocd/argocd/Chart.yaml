@@ -1,0 +1,7 @@
+apiVersion: v2
+name: argocd-resources
+description: argocd homelab cluster resources
+type: application
+version: 0.0.0
+home: ""
+icon: ""

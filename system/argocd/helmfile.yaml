@@ -1,0 +1,33 @@
+repositories:
+  - name: argo
+    # version: 7.5.2
+    url: https://argoproj.github.io/argo-helm
+  # - name: argocd-apps
+    # version: 2.0.1
+    # repository: https://argoproj.github.io/argo-helm
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+---
+releases:
+  - name: argocd
+    chart: argo/argo-cd
+    version: ~7.6.7
+    namespace: argocd
+    values:
+      - values/argocd.yaml
+  - name: argocd-apps
+    chart: argo/argocd-apps
+    version: ~2.0.1
+    namespace: argocd
+    values:
+      - values/argocd-apps.yaml
+  - name: argocd-resources
+    chart: argocd 
+    version: 0.0.0
+    namespace: argocd
