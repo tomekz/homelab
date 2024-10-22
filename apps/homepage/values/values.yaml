@@ -38,6 +38,10 @@ config:
             href: https://audiobookshelf.tomekz.party/
             description: Self-hosted audiobook and podcast server
             icon: audiobookshelf.svg
+        - Bookinfo:
+            href: https://bookinfo.tomekz.party/
+            description: Sample microservices application for Istio
+            icon: bookinfo.svg
 
     - Infra Services:
         - ArgoCD:
@@ -48,6 +52,14 @@ config:
             href: https://grafana.tomekz.party/
             description: Monitoring and dashboards
             icon: grafana.svg
+        - Prometheus:
+            href: https://prometheus.tomekz.party/
+            description: Monitoring and alerting
+            icon: prometheus.svg
+        - Alertmanager:
+            href: https://alertmanager.tomekz.party/
+            description: Alerting and notifications
+            icon: alertmanager.svg
 
   widgets:
     - kubernetes:
