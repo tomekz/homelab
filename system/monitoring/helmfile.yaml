@@ -20,3 +20,7 @@ releases:
     namespace: monitoring
     values:
       - values/values.yaml
+  - name: monitoring
+    chart: monitoring
+    version: 0.0.0
+    namespace: monitoring

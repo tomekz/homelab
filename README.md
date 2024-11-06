@@ -114,6 +114,7 @@ Tools used for managing the cluster
 ## :heavy_check_mark: TODO
 
 - [ ] setup kube-prometheus-stack monitoring stack
+- [ ] setup argocd
 - [ ] setup local identity provider with authentik
     - [ ] Setup federated identity for apps
 - [x] Setup cloudflare tunnel for public access
