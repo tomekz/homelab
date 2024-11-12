@@ -27,7 +27,7 @@ End User Applications
     </tr>
     <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/audiobookshelf.svg"></td>
-        <td><a href="https://www.audiobookshelf.org/">Falco</a></td>
+        <td><a href="https://www.audiobookshelf.org/">Audiobookshelf</a></td>
         <td>Self-hosted audiobook and podcast server</td>
     </tr>
 </table>

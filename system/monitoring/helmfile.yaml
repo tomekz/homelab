@@ -1,6 +1,8 @@
 repositories:
   - name: prometheus
     url: https://prometheus-community.github.io/helm-charts
+  - name: metrics-server
+    url: https://kubernetes-sigs.github.io/metrics-server/
 
 helmDefaults:
   createNamespace: true # default setting - here only to highlight that namespaces are created automatically
@@ -20,6 +22,12 @@ releases:
     namespace: monitoring
     values:
       - values/values.yaml
+  - name: metrics-server
+    chart: metrics-server/metrics-server
+    version: ~3.12.2
+    namespace: monitoring
+    values:
+      - values/values-ms.yaml
   - name: monitoring
     chart: monitoring
     version: 0.0.0
