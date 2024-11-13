@@ -1,6 +1,7 @@
 repositories:
   - name: istio
     url: https://istio-release.storage.googleapis.com/charts
+    skipTLSVerify: true
 
 helmDefaults:
   insecureSkipTLSVerify: true
@@ -35,6 +36,7 @@ releases:
       - values-templates/istiod.yaml.gotmpl
 
   - name: istio-cni
+    insecureSkipTLSVerify: true
     chart: istio/cni
     version: ~1.23.0
     labels:
