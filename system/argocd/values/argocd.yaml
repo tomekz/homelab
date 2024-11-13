@@ -1,0 +1,96 @@
+configs:
+  params:
+    server.insecure: true
+  cmp:
+    create: true
+    plugins:
+      helmfilev2:
+        # init:
+        #   command: [sh, -c, 'helm repo update']
+        generate:
+          command: [sh, -c, 'helmfile -e $ARGOCD_ENV_HELMFILE_ENV -l $ARGOCD_ENV_HELMFILE_RELEASE_LABEL $ARGOCD_ENV_VALUES_OVERWRITE template -q $( [ -n "$ARGOCD_ENV_HELMFILE_RELEASE_ARGS" ] && echo "--args $ARGOCD_ENV_HELMFILE_RELEASE_ARGS" )']
+repoServer:
+  extraContainers:
+    - name: cmp-helmfilev2
+      command:
+        - "/var/run/argocd/argocd-cmp-server"
+      image: busybox
+      # securityContext:
+      #   runAsNonRoot: true
+      #   runAsUser: 999
+      volumeMounts:
+        - mountPath: /var/run/argocd
+          name: var-files
+        - mountPath: /home/argocd/cmp-server/plugins
+          name: plugins
+        - mountPath: /home/argocd/cmp-server/config/plugin.yaml
+          subPath: helmfilev2.yaml
+          name: argocd-cmp-cm
+        - mountPath: /tmp
+          name: cmp-tmp
+        - mountPath: /usr/local/bin/helmfile
+          name: custom-tools
+          subPath: helmfile
+        - mountPath: /usr/local/bin/kubectl
+          name: custom-tools
+          subPath: kubectl
+        - mountPath: /usr/local/bin/kustomize
+          name: custom-tools
+          subPath: kustomize
+        - mountPath: /usr/local/bin/helm
+          name: custom-tools
+          subPath: helm
+  initContainers:
+    - name: download-tools
+      image: alpine:latest
+      command: [sh, -c]
+      args:
+        - wget -q https://github.com/helmfile/helmfile/releases/download/v0.163.1/helmfile_0.163.1_linux_amd64.tar.gz &&
+          tar xf helmfile_0.163.1_linux_amd64.tar.gz &&
+          wget -q https://dl.k8s.io/release/v1.29.4/bin/linux/amd64/kubectl &&
+          wget -q https://get.helm.sh/helm-v3.14.4-linux-amd64.tar.gz &&
+          tar xf helm-v3.14.4-linux-amd64.tar.gz &&
+          wget -q https://github.com/kubernetes-sigs/kustomize/releases/download/kustomize%2Fv5.4.1/kustomize_v5.4.1_linux_amd64.tar.gz &&
+          tar xf kustomize_v5.4.1_linux_amd64.tar.gz &&
+          mv linux-amd64/helm /custom-tools/helm && chmod +x /custom-tools/helm &&
+          mv helmfile /custom-tools/helmfile && chmod +x /custom-tools/helmfile &&
+          mv kubectl /custom-tools/kubectl && chmod +x /custom-tools/kubectl &&
+          mv kustomize /custom-tools/kustomize && chmod +x /custom-tools/kustomize
+      resources:
+        limits:
+          cpu: 900m
+          memory: 1Gi
+        requests:
+          cpu: 100m
+          memory: 32Mi
+      volumeMounts:
+        - mountPath: /custom-tools
+          name: custom-tools
+  volumeMounts:
+  - mountPath: /usr/local/bin/helm
+    name: custom-tools
+    subPath: helm
+  - mountPath: /usr/local/bin/helmfile
+    name: custom-tools
+    subPath: helmfile
+  - mountPath: /usr/local/bin/kubectl
+    name: custom-tools
+    subPath: kubectl
+  - mountPath: /usr/local/bin/kustomize
+    name: custom-tools
+    subPath: kustomize
+
+  volumes:
+    - name: helm-dir-config
+      emptyDir: {}
+    - name: helm-dir-cache
+      emptyDir: {}
+    - name: custom-tools
+      emptyDir: {}
+    - name: cmp-tmp
+      emptyDir: {}
+    - name: argocd-cmp-cm
+      configMap:
+        name: argocd-cmp-cm
+
+

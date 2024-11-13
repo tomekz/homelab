@@ -21,9 +21,6 @@ releases:
     namespace: argocd
     values:
       - values/argocd.yaml
-    set:
-      - name: configs.params."server\.insecure"
-        value: "true"
   - name: argocd-apps
     chart: argo/argocd-apps
     version: ~2.0.1
