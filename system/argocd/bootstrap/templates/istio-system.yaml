@@ -1,0 +1,88 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-base
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-system
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: system/istio
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=istio-base
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-cni
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-system
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: system/istio
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=istio-cni
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istiod
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-system
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: system/istio
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=istiod
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-ztunnel
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-system
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: system/istio
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=istio-ztunnel
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+

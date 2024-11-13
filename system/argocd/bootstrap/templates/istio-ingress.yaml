@@ -1,0 +1,21 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-gateway
+  namespace: argocd
+spec:
+  destination:
+    namespace: istio-gateway
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: system/istio
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=istio-gateway
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD

@@ -4,8 +4,8 @@ repositories:
     skipTLSVerify: true
 
 helmDefaults:
-  insecureSkipTLSVerify: true
   createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  insecureSkipTLSVerify: true
   wait: true
   timeout: 300
 
@@ -22,6 +22,7 @@ releases:
     labels:
       release: istio-base
     namespace: istio-system
+    insecureSkipTLSVerify: true
     missingFileHandler: Error
     values:
       - values-templates/base.yaml.gotmpl
@@ -31,17 +32,18 @@ releases:
     labels:
       release: istiod
     namespace: istio-system
+    insecureSkipTLSVerify: true
     missingFileHandler: Error
     values:
       - values-templates/istiod.yaml.gotmpl
 
   - name: istio-cni
-    insecureSkipTLSVerify: true
     chart: istio/cni
     version: ~1.23.0
     labels:
       release: istio-cni
     namespace: istio-system
+    insecureSkipTLSVerify: true
     set:
     - name: profile
       value: "ambient"
@@ -51,8 +53,12 @@ releases:
     version: ~1.23.0
     labels:
       release: istio-ztunnel
+    insecureSkipTLSVerify: true
     namespace: istio-system
   - name: istio-gateway
+    labels:
+      release: istio-gateway
     chart: gateway
     version: 0.0.0
+    insecureSkipTLSVerify: true
     namespace: istio-gateway
