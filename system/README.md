@@ -8,5 +8,3 @@ All applications are deployed via ArgoCD, however, ArgoCD needs initially bootst
 ```bash
 make bootstrap
 ```
-
-*Note: The `argocd/values-initial.yaml` file is used for a barebones deployment of ArgoCD.  Then ArgoCD will use the `values.yaml` file for keeping in sync with the desired state.*
