@@ -6,18 +6,20 @@ configs:
     plugins:
       helmfilev2:
         # init:
-        #   command: [sh, -c, 'helm repo update']
+        #   command: [sh, -c, 'helm repo add istio https://istio-release.storage.googleapis.com/charts --insecure-skip-tls-verify']
         generate:
           command: [sh, -c, 'helmfile -e $ARGOCD_ENV_HELMFILE_ENV -l $ARGOCD_ENV_HELMFILE_RELEASE_LABEL $ARGOCD_ENV_VALUES_OVERWRITE template -q $( [ -n "$ARGOCD_ENV_HELMFILE_RELEASE_ARGS" ] && echo "--args $ARGOCD_ENV_HELMFILE_RELEASE_ARGS" )']
+        discover:
+          fileName: "./helmfile.yaml"
 repoServer:
   extraContainers:
     - name: cmp-helmfilev2
       command:
         - "/var/run/argocd/argocd-cmp-server"
       image: busybox
-      # securityContext:
-      #   runAsNonRoot: true
-      #   runAsUser: 999
+      securityContext:
+        runAsNonRoot: true
+        runAsUser: 999
       volumeMounts:
         - mountPath: /var/run/argocd
           name: var-files
@@ -37,6 +39,10 @@ repoServer:
         - mountPath: /usr/local/bin/kustomize
           name: custom-tools
           subPath: kustomize
+        - mountPath: /.cache
+          name: helm-dir-cache
+        - mountPath: /.config
+          name: helm-dir-config
         - mountPath: /usr/local/bin/helm
           name: custom-tools
           subPath: helm

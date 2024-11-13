@@ -1,0 +1,43 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-cni
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  source:
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+    path: system/istio
+    plugin:
+      name: helmfilev2 
+      env:
+        - name: HELMFILE_ENV
+          value: homelab
+        - name: HELMFILE_RELEASE_LABEL
+          value: release=istio-cni
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: istio-base
+  namespace: argocd
+spec:
+  project: default
+  destination:
+    server: https://kubernetes.default.svc
+    namespace: istio-system
+  source:
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+    path: system/istio
+    plugin:
+      name: helmfilev2 
+      env:
+        - name: HELMFILE_ENV
+          value: homelab
+        - name: HELMFILE_RELEASE_LABEL
+          value: release=istio-base

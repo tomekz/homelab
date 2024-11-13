@@ -3,6 +3,7 @@ repositories:
     url: https://istio-release.storage.googleapis.com/charts
 
 helmDefaults:
+  insecureSkipTLSVerify: true
   createNamespace: true # default setting - here only to highlight that namespaces are created automatically
   wait: true
   timeout: 300
