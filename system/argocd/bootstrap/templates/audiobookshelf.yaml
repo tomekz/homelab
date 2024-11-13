@@ -1,0 +1,44 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: audiobookshelf
+  namespace: argocd
+spec:
+  destination:
+    namespace: audiobookshelf
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: apps/audiobookshelf
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=audiobookshelf
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: audiobookshelf-ingress
+  namespace: argocd
+spec:
+  destination:
+    namespace: audiobookshelf
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  source:
+    path: apps/audiobookshelf
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=audiobookshelf-ingress
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+

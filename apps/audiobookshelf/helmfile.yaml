@@ -1,6 +1,7 @@
 repositories:
   - name: geek-cookbook
     url: https://geek-cookbook.github.io/charts/
+    skipTLSVerify: true
 
 helmDefaults:
   createNamespace: true # default setting - here only to highlight that namespaces are created automatically
@@ -16,10 +17,16 @@ environments:
 releases:
   - name: audiobookshelf
     chart: geek-cookbook/audiobookshelf
+    insecureSkipTLSVerify: true
     version: ~1.2.2
     namespace: audiobookshelf
+    labels:
+      release: audiobookshelf
   - name: audiobookshelf-ingress
     chart: ingress
+    insecureSkipTLSVerify: true
     version: 0.0.0
+    labels:
+      release: audiobookshelf-ingress
     namespace: audiobookshelf
 
