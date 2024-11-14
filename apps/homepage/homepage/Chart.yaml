@@ -1,6 +1,6 @@
 apiVersion: v2
 name: homepage
-description: homepage
+description: homepage resources for homelab cluster
 type: application
 version: 0.0.0
 home: ""
