@@ -1,6 +1,7 @@
 repositories:
   - name: homepage
     url: http://jameswynn.github.io/helm-charts
+    skipTLSVerify: true
 
 helmDefaults:
   createNamespace: true # default setting - here only to highlight that namespaces are created automatically
@@ -15,10 +16,16 @@ releases:
   - name: homepage
     chart: homepage/homepage
     version: ~2.0.1
+    insecureSkipTLSVerify: true
     namespace: homepage
+    labels:
+      release: homepage
     values:
       - values/values.yaml
   - name: homepage-resources
     chart: homepage
+    insecureSkipTLSVerify: true
     version: 0.0.0
+    labels:
+      release: homepage-resources
     namespace: homepage
