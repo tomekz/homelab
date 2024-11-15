@@ -8,6 +8,8 @@ spec:
     namespace: audiobookshelf
     server: {{ .Values.spec.destination.server }}
   project: default
+  syncPolicy:
+    automated: {}
   source:
     path: apps/audiobookshelf
     plugin:
@@ -30,6 +32,8 @@ spec:
     namespace: audiobookshelf
     server: {{ .Values.spec.destination.server }}
   project: default
+  syncPolicy:
+    automated: {}
   source:
     path: apps/audiobookshelf
     plugin:

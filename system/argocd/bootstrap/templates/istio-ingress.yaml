@@ -8,6 +8,8 @@ spec:
     namespace: istio-gateway
     server: {{ .Values.spec.destination.server }}
   project: default
+  syncPolicy:
+    automated: {}
   source:
     path: system/istio
     plugin:

@@ -8,6 +8,8 @@ spec:
     namespace: homepage
     server: {{ .Values.spec.destination.server }}
   project: default
+  syncPolicy:
+    automated: {}
   source:
     path: apps/homepage
     plugin:
@@ -30,6 +32,8 @@ spec:
     namespace: homepage
     server: {{ .Values.spec.destination.server }}
   project: default
+  syncPolicy:
+    automated: {}
   source:
     path: apps/homepage
     plugin:
