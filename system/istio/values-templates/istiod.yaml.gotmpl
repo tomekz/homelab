@@ -36,8 +36,9 @@ defaults:
     # Additional container arguments
     extraContainerArgs: []
 
-    env: 
-      PILOT_ENABLE_AMBIENT: "true"
+    # TODO: needed for the ambient mode
+    # env: 
+    #   PILOT_ENABLE_AMBIENT: "true"
     
     # Settings related to the untaint controller
     # This controller will remove `cni.istio.io/not-ready` from nodes when the istio-cni pod becomes ready

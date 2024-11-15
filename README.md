@@ -113,9 +113,10 @@ Tools used for managing the cluster
 
 ## :heavy_check_mark: TODO
 
-- [ ] setup kube-prometheus-stack monitoring stack
-- [ ] setup argocd
+- [x] setup kube-prometheus-stack monitoring stack
+- [x] setup argocd
+- [ ] expose kiali
 - [ ] setup local identity provider with authentik
     - [ ] Setup federated identity for apps
 - [x] Setup cloudflare tunnel for public access
-- [x] Setup Falco for runtime security
+- [ ] Setup Falco for runtime security

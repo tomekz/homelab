@@ -44,17 +44,19 @@ releases:
       release: istio-cni
     namespace: istio-system
     insecureSkipTLSVerify: true
-    set:
-    - name: profile
-      value: "ambient"
+    # TODO: Needed to enable ambient mode
+    # set:
+    # - name: profile
+    #   value: "ambient"
 
-  - name: istio-ztunnel
-    chart: istio/ztunnel
-    version: ~1.23.0
-    labels:
-      release: istio-ztunnel
-    insecureSkipTLSVerify: true
-    namespace: istio-system
+  # TODO: Needed to enable ambient mode
+  # - name: istio-ztunnel
+  #   chart: istio/ztunnel
+  #   version: ~1.23.0
+  #   labels:
+  #     release: istio-ztunnel
+  #   insecureSkipTLSVerify: true
+  #   namespace: istio-system
   - name: istio-gateway
     labels:
       release: istio-gateway
