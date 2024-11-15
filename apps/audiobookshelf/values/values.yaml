@@ -3,6 +3,9 @@
 # This chart inherits from our common library chart. You can check the default values/options here:
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
+global:
+  labels:
+    sidecar.istio.io/inject: "true" # Enable Istio sidecar injection
 
 image:
   # -- image repository
