@@ -1,2 +1,2 @@
-1. bootstrap argocd
-    2. follow instructions in [../system/argocd/README.md](argocd)
+- bootstrap argocd
+  - follow instructions in [argocd-bootstrap](../system/argocd/README.md)

@@ -47,6 +47,11 @@ Applications/services core to the cluster
         <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.</td>
     </tr>
     <tr>
+        <td><img width="32" src="https://diagrams.mingrammer.com/img/resources/onprem/network/istio.png"></td>
+        <td><a href="https://istio.io/latest/">Istio</a></td>
+        <td>For ingress and service mesh</td>
+    </tr>
+    <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/png/authentik.png"></td>
         <td><a href="https://goauthentik.io/">Authentik</a></td>
         <td>Used for SSO and other auth workflows.</td>
@@ -108,8 +113,8 @@ Tools used for managing the cluster
 
 1. [Bootstrap servers](guide/0-bootstrap.md)
 2. [Setup Kubernetes cluster](guide/1-setup-kubernetes-cluster.md)
-3. [Setup local DNS](guide/3-setup-local-dns.md)
-4. [Deploy applications](guide/4-deploy-applications.md)
+3. [Setup local DNS](guide/2-setup-local-dns.md)
+4. [Deploy applications](guide/3-deploy-applications.md)
 
 ## :heavy_check_mark: TODO
 
