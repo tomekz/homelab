@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kiali-nodeport
+  namespace: istio-system
+spec:
+  ports:
+  - name: port-1
+    nodePort: 32762
+    port: 20001
+    protocol: TCP
+    targetPort: 20001
+  - name: port-2
+    nodePort: 32347
+    port: 9090
+    protocol: TCP
+    targetPort: 9090
+  selector:
+    app.kubernetes.io/instance: kiali
+    app.kubernetes.io/name: kiali
+  type: NodePort

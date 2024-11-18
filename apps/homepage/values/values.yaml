@@ -48,6 +48,10 @@ config:
             href: https://argocd.tomekz.party/
             description: GitOps for my cluster
             icon: argocd.svg
+        - Kiali:
+            href: https://kiali.tomekz.party/
+            description: Console for istio service mesh
+            icon: kiali.svg
         - Grafana:
             href: https://grafana.tomekz.party/
             description: Monitoring and dashboards
