@@ -1,4 +1,4 @@
-I'm using cloudflare for DNS
+I'm using cloudflare for DNS.
 It can resolve the domain names to the local IP addresses of the servers. 
 This is useful for accessing services running on the cluster from within the local network.
 

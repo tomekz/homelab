@@ -35,7 +35,6 @@ EOF
 # Apply sysctl params without reboot
 sudo sysctl --system
 ```
-- [x] use `systemd` as your control group (cgroup) driver
 - [x] install container runtime ([containerd](https://github.com/containerd/containerd/blob/main/docs/getting-started.md))
     - follow the instructions on this [page](https://docs.docker.com/engine/install/ubuntu/#install-using-the-repository)
 - [x] use `systemd` as your control group (cgroup) driver
