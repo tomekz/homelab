@@ -1,0 +1,23 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: bookinfo
+  namespace: argocd
+spec:
+  destination:
+    namespace: bookinfo
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  syncPolicy:
+    automated: {}
+  source:
+    path: apps/bookinfo
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=bookinfo
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD

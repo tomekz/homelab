@@ -12,4 +12,5 @@ releases:
     chart: bookinfo
     version: 0.0.0
     namespace: bookinfo
-
+    labels:
+      release: bookinfo
