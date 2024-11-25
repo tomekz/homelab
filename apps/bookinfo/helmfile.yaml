@@ -10,7 +10,8 @@ environments:
 releases:
   - name: bookinfo
     chart: bookinfo
-    version: 0.0.0
+    version: 0.0.1
     namespace: bookinfo
     labels:
       release: bookinfo
+      istio-injection: enabled
