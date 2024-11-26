@@ -29,5 +29,5 @@ spec:
         type: PathPrefix
         value: /api/v1/products
     backendRefs:
-    - name: productpage
+    - name: productpage-v1
       port: 9080
