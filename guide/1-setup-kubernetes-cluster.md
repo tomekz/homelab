@@ -45,7 +45,7 @@ sudo sysctl --system
   [plugins."io.containerd.grpc.v1.cri".containerd.runtimes.runc.options]
     SystemdCgroup = true
 ```
-- [x] install kubeadm on all the nodes
+- [x] install kubeadm, kubelet and kubectl on all the nodes
     - follow the instructions on this [page](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/install-kubeadm/)
 
 - [x] create a single control plane cluster with [kubeadm](https://kubernetes.io/docs/setup/production-environment/tools/kubeadm/create-cluster-kubeadm/)
