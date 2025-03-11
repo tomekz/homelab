@@ -3,8 +3,6 @@
 # This chart inherits from our common library chart. You can check the default values/options here:
 # https://github.com/k8s-at-home/library-charts/tree/main/charts/stable/common/values.yaml
 #
-labels:
-  sidecar.istio.io/inject: "true" # Enable Istio sidecar injection
 
 image:
   # -- image repository
@@ -15,6 +13,9 @@ image:
   # -- image pull policy
   pullPolicy: IfNotPresent
 
+podLabels:
+  sidecar.istio.io/inject: "true" # Enable Istio sidecar injection
+  app: "audiobookshelf"
 # -- environment variables. See more environment variables in the [audiobookshelf documentation](https://hub.docker.com/r/advplyr/audiobookshelf)
 # @default -- See below
 env:
