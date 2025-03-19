@@ -1,0 +1,7 @@
+apiVersion: v2
+name: openwebui
+description: open-webui resources for homelab cluster
+type: application
+version: 0.0.0
+home: ""
+icon: ""

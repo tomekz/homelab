@@ -1,0 +1,31 @@
+repositories:
+  - name: openwebui
+    url: https://helm.openwebui.com/
+    skipTLSVerify: true
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+---
+releases:
+  - name: openwebui
+    chart: openwebui/open-webui
+    version: 5.25.0
+    insecureSkipTLSVerify: true
+    namespace: openwebui
+    labels:
+      release: openwebui
+    values:
+      - values/values.yaml
+  - name: openwebui-resources
+    chart: openwebui
+    insecureSkipTLSVerify: true
+    version: 0.0.0
+    labels:
+      release: openwebui-resources
+    namespace: openwebui

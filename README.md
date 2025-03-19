@@ -42,7 +42,12 @@ Applications/services core to the cluster
         <th>Description</th>
     </tr>
     <tr>
-        <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/argocd.svg"></td>
+        <td><img width="32" src="https://avatars.githubusercontent.com/u/158137808?s=48&v=4"></td>
+        <td><a href="https://github.com/open-webui/open-webui">open-webui</a></td>
+        <td>User-friendly AI Interface (Supports Ollama, OpenAI API, ...)</td>
+    </tr>
+    <tr>
+        <td><img width="32" src="https://avatars.githubusercontent.com/u/30269780?s=48&v=4"></td>
         <td><a href="https://argo-cd.readthedocs.io/en/stable/">ArgoCD</a></td>
         <td>Argo CD is a declarative, GitOps continuous delivery tool for Kubernetes.</td>
     </tr>

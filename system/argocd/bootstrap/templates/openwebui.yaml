@@ -1,0 +1,48 @@
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openwebui
+  namespace: argocd
+spec:
+  destination:
+    namespace: openwebui
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  syncPolicy:
+    automated: {}
+  source:
+    path: apps/openwebui
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=openwebui
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+---
+apiVersion: argoproj.io/v1alpha1
+kind: Application
+metadata:
+  name: openwebui-resources
+  namespace: argocd
+spec:
+  destination:
+    namespace: openwebui
+    server: {{ .Values.spec.destination.server }}
+  project: default
+  syncPolicy:
+    automated: {}
+  source:
+    path: apps/openwebui
+    plugin:
+      env:
+      - name: HELMFILE_ENV
+        value: homelab
+      - name: HELMFILE_RELEASE_LABEL
+        value: release=openwebui-resources
+      name: helmfilev2
+    repoURL: https://github.com/tomekz/homelab
+    targetRevision: HEAD
+

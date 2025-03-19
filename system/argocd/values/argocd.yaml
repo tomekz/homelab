@@ -1,3 +1,5 @@
+nodeSelector:
+  "kubernetes.io/hostname": "kube-master"
 configs:
   params:
     server.insecure: true
@@ -12,6 +14,8 @@ configs:
         discover:
           fileName: "./helmfile.yaml"
 repoServer:
+  nodeSelector:
+  "kubernetes.io/hostname": "kube-master"
   extraContainers:
     - name: cmp-helmfilev2
       command:

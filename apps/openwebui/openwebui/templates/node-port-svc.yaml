@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: openwebui-nodeport
+spec:
+  ports:
+  - nodePort: 31794
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    app.kubernetes.io/instance: openwebui
+    app.kubernetes.io/component: open-webui
+  type: NodePort

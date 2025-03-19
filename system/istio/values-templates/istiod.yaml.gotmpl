@@ -16,7 +16,7 @@ _internal_defaults_do_not_set:
   resources:
     requests:
       cpu: 500m
-      memory: 2048Mi
+      memory: 256Mi
 
   # Set to `type: RuntimeDefault` to use the default profile if available.
   seccompProfile: {}
@@ -353,7 +353,7 @@ _internal_defaults_do_not_set:
           memory: 128Mi
         limits:
           cpu: 2000m
-          memory: 1024Mi
+          memory: 512Mi
 
       # Default port for Pilot agent health checks. A value of 0 will disable health checking.
       statusPort: 15020
