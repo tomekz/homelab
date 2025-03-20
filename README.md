@@ -26,6 +26,11 @@ End User Applications
         <th>Description</th>
     </tr>
     <tr>
+        <td><img width="32" src="https://avatars.githubusercontent.com/u/158137808?s=48&v=4"></td>
+        <td><a href="https://github.com/open-webui/open-webui">open-webui</a></td>
+        <td>User-friendly AI Interface (Supports Ollama, OpenAI API, ...)</td>
+    </tr>
+    <tr>
         <td><img width="32" src="https://cdn.jsdelivr.net/gh/walkxcode/dashboard-icons/svg/audiobookshelf.svg"></td>
         <td><a href="https://www.audiobookshelf.org/">Audiobookshelf</a></td>
         <td>Self-hosted audiobook and podcast server</td>
@@ -40,11 +45,6 @@ Applications/services core to the cluster
         <th>Logo</th>
         <th>Name</th>
         <th>Description</th>
-    </tr>
-    <tr>
-        <td><img width="32" src="https://avatars.githubusercontent.com/u/158137808?s=48&v=4"></td>
-        <td><a href="https://github.com/open-webui/open-webui">open-webui</a></td>
-        <td>User-friendly AI Interface (Supports Ollama, OpenAI API, ...)</td>
     </tr>
     <tr>
         <td><img width="32" src="https://avatars.githubusercontent.com/u/30269780?s=48&v=4"></td>
