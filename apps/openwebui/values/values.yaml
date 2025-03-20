@@ -12,8 +12,9 @@ ollama:
       enabled: false
     models:
       pull:
-        - lamma3
-        - gemma3
+        - deepseek-r1:1.5b
+        - gemma3:1b
+        - llama3.2
       run:
         - gemma3:1b
   persistentVolume:
@@ -21,9 +22,9 @@ ollama:
     volumeName: "local-pv-ollama"
   resources:
     requests:
-      memory: 6Gi
+      memory: 5Gi
     limits:
-      memory: 8Gi
+      memory: 6Gi
   nodeSelector:
     "kubernetes.io/hostname": "kube-worker-2"
 

@@ -1,7 +1,7 @@
 _internal_defaults_do_not_set:
 
-  autoscaleEnabled: true
-  autoscaleMin: 2
+  autoscaleEnabled: false
+  autoscaleMin: 1
   autoscaleMax: 5
 
   hub: ""
@@ -57,7 +57,9 @@ _internal_defaults_do_not_set:
   # Additional volumes to the istiod pod
   volumes: []
 
-  nodeSelector: {}
+  nodeSelector:
+  kubernetes.io/hostname: kube-worker-1
+
   podAnnotations: {}
   serviceAnnotations: {}
   serviceAccountAnnotations: {}
