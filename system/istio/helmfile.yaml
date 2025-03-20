@@ -61,6 +61,8 @@ releases:
     labels:
       release: istio-gateway
     chart: gateway
-    version: 0.0.0
+    values:
+      - values-templates/istio-gateway.yaml.gotmpl
+    version: ~1.24.2
     insecureSkipTLSVerify: true
     namespace: istio-gateway
