@@ -41,17 +41,21 @@ config:
         - Bookinfo:
             href: https://bookinfo.tomekz.party/
             description: Sample microservices application for Istio
-            icon: bookinfo.svg
+            icon: linux.svg
+        - Open WebUI:
+            href: https://ai.tomekz.party/
+            description: User-friendly AI Interface (Supports Ollama, OpenAI API, ...)
+            icon: claude-ai.svg
 
     - Infra Services:
         - ArgoCD:
             href: https://argocd.tomekz.party/
             description: GitOps for my cluster
-            icon: argocd.svg
+            icon: argo-cd.svg
         - Kiali:
             href: https://kiali.tomekz.party/
             description: Console for istio service mesh
-            icon: kiali.svg
+            icon: meshtastic.svg
         - Grafana:
             href: https://grafana.tomekz.party/
             description: Monitoring and dashboards
@@ -94,4 +98,3 @@ env:
     # This value must be set
     # ref: https://gethomepage.dev/installation/#homepage_allowed_hosts
     value: home.tomekz.party, home.tomekz.dev
-
