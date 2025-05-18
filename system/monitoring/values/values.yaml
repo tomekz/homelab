@@ -958,6 +958,10 @@ alertmanager:
 ## Using default values from https://github.com/grafana/helm-charts/blob/main/charts/grafana/values.yaml
 ##
 grafana:
+  grafana.ini:
+    server:
+      domain: grafana.tomekz.party
+      root_url: "https://grafana.tomekz.party"
   enabled: true
   namespaceOverride: ""
 
