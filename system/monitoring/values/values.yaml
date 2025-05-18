@@ -526,7 +526,7 @@ alertmanager:
     ## If you want to make sure that connections from a particular client are passed to the same Pod each time
     ## Accepts 'ClientIP' or 'None'
     ##
-    sessionAffinity: None
+    sessionAffinity: ClientIP
 
     ## If you want to modify the ClientIP sessionAffinity timeout
     ## The value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP"
@@ -3172,7 +3172,7 @@ prometheus:
     ## If you want to make sure that connections from a particular client are passed to the same Pod each time
     ## Accepts 'ClientIP' or 'None'
     ##
-    sessionAffinity: None
+    sessionAffinity: ClientIP
 
     ## If you want to modify the ClientIP sessionAffinity timeout
     ## The value must be >0 && <=86400(for 1 day) if ServiceAffinity == "ClientIP"
