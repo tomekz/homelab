@@ -8,7 +8,7 @@ This includes setting up the physical servers, configuring the network, and inst
 on all the servers:
 - container runtime: containerd
 - kubeadm
-- networking plugin: calico
+- networking plugin: flannel
 
 ## servers 
 

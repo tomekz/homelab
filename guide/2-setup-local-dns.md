@@ -11,4 +11,4 @@ A  tomekz.party INGRESS_LOAD_BALANCER_IP
 CNAME  *.tomekz.party
 ```
 
-where `INGRESS_LOAD_BALANCER_IP` is the `external-ip`of the istio gateway LoadBalancer kubernetes service
+where `INGRESS_LOAD_BALANCER_IP` is the `external-ip` of the istio gateway LoadBalancer kubernetes service

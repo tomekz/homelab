@@ -125,7 +125,7 @@ Tools used for managing the cluster
 
 - [x] setup kube-prometheus-stack monitoring stack
 - [x] setup argocd
-- [ ] expose kiali
+- [x] expose kiali
 - [ ] setup local identity provider with authentik
     - [ ] Setup federated identity for apps
 - [x] Setup cloudflare tunnel for public access
