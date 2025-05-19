@@ -97,4 +97,4 @@ env:
   - name: HOMEPAGE_ALLOWED_HOSTS
     # This value must be set
     # ref: https://gethomepage.dev/installation/#homepage_allowed_hosts
-    value: home.tomekz.party, home.tomekz.dev
+    value: "*"
