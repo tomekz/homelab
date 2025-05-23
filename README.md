@@ -4,6 +4,8 @@ This repo contains the configuration files and scripts for managing my Kubernete
 
 All apps are deployed/configured via GitOps using ArgoCD.
 
+Applications are exposed using Istio Gateway and accessible through a private cloudflare DNS zone.
+
 ## :computer: Hardware
 The homelab consists of Dell OptiPlex servers, each with the following specifications:
 
