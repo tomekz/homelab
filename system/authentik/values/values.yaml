@@ -1,0 +1,73 @@
+authentik:
+  postgresql:
+    user: file:///postgres-creds/username
+    password: file:///postgres-creds/password
+
+server:
+  ingress:
+    enabled: false
+  volumes:
+    - name: postgres-creds
+      secret:
+        secretName: authentik-postgres-credentials
+  volumeMounts:
+    - name: postgres-creds
+      mountPath: /postgres-creds
+      readOnly: true
+postgresql:
+  enabled: true
+
+redis:
+  enabled: true
+
+additionalObjects:
+  - apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: local-pv-authentik-postgres
+    spec:
+      capacity:
+        storage: 10Gi
+      accessModes:
+        - ReadWriteOnce
+      persistentVolumeReclaimPolicy: Retain
+      storageClassName: local-storage
+      local:
+        path: /mnt/authentik/postgres
+      nodeAffinity:
+        required:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - kube-worker-1
+  - apiVersion: v1
+    kind: PersistentVolume
+    metadata:
+      name: local-pv-authentik-redis
+    spec:
+      capacity:
+        storage: 10Gi
+      accessModes:
+        - ReadWriteOnce
+      persistentVolumeReclaimPolicy: Retain
+      storageClassName: local-storage
+      local:
+        path: /mnt/authentik/redis
+      nodeAffinity:
+        required:
+          nodeSelectorTerms:
+            - matchExpressions:
+                - key: kubernetes.io/hostname
+                  operator: In
+                  values:
+                    - kube-worker-1
+  - apiVersion: v1
+    kind: Secret
+    metadata:
+      name: authentik-postgres-credentials
+    type: Opaque
+    stringData:
+      username: "${POSTGRESQL_USERNAME}"
+      password: "${POSTGRESQL_PASSWORD}"

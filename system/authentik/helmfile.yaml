@@ -1,0 +1,25 @@
+repositories:
+  - name: authentik
+    url: https://charts.goauthentik.io
+    skipTLSVerify: true
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+
+---
+releases:
+  - name: authentik
+    chart: authentik/authentik
+    version: ~2025.4.1
+    namespace: authentik
+    insecureSkipTLSVerify: true
+    values:
+      - values/values.yaml
+    labels:
+      release: authentik

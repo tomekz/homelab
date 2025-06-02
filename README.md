@@ -130,5 +130,6 @@ Tools used for managing the cluster
 - [x] expose kiali
 - [ ] setup local identity provider with authentik
     - [ ] Setup federated identity for apps
+- [ ] setup sealed secrets
 - [x] Setup cloudflare tunnel for public access
 - [ ] Setup Falco for runtime security
