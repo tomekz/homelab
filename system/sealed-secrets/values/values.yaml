@@ -1,0 +1,8 @@
+sealed-secrets:
+  fullnameOverride: sealed-secrets-controller
+  image:
+    registry: docker.io
+    repository: bitnami/sealed-secrets-controller
+    tag: 0.26.3
+    pullPolicy: IfNotPresent
+  secretName: "sealed-secrets-key"

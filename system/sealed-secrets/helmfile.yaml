@@ -1,0 +1,26 @@
+repositories:
+  - name: sealed-secrets
+    url: https://bitnami-labs.github.io/sealed-secrets
+    skipTLSVerify: true
+
+helmDefaults:
+  createNamespace: true # default setting - here only to highlight that namespaces are created automatically
+  wait: true
+  timeout: 300
+
+environments:
+  homelab:
+    kubeContext: kubernetes-admin@kubernetes
+    values:
+      - values/values.yaml
+---
+releases:
+  - name: sealed-secrets
+    chart: sealed-secrets/sealed-secrets
+    version: ~2.17.1
+    namespace: sealed-secrets
+    insecureSkipTLSVerify: true
+    values:
+      - values/values.yaml
+    labels:
+      release: sealed-secrets
