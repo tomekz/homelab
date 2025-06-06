@@ -23,3 +23,10 @@ releases:
       - values/values.yaml
     labels:
       release: authentik
+  - name: authentik-resources
+    version: 0.0.0
+    chart: authentik
+    namespace: authentik
+    insecureSkipTLSVerify: true
+    labels:
+      release: authentik-resources
