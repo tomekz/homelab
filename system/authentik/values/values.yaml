@@ -4,7 +4,7 @@ authentik:
 server:
   envFrom:
     - secretRef:
-        name: authentik-secret
+        name: authentik
   volumes:
     - name: postgres-creds
       secret:
@@ -26,12 +26,8 @@ worker:
 postgresql:
   enabled: true
   auth:
-  username: authentik
-  database: authentik
-  existingSecret: postgresql-secret
-  secretKeys:
-    adminPasswordKey: POSTGRES_PASSWORD
-    userPasswordKey: POSTGRES_PASSWORD
+    username: authentik
+    database: authentik
 
 redis:
   enabled: true

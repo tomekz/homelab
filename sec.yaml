@@ -1,0 +1,10 @@
+apiVersion: v1
+data:
+  password: dG9tZWsK
+  username: YXV0aGVudGlr
+kind: Secret
+metadata:
+  creationTimestamp: "2025-06-06T09:29:04Z"
+  name: postgresql-secret
+  namespace: authentik
+type: Opaque
